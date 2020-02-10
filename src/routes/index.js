@@ -4,6 +4,6 @@ import UsersController from '../controllers/UsersController';
 
 const router = Router();
 
-router.get('/users/:usernameString/:languages', Validator.paramsChecker, UsersController.fetchUsersByLanguage);
+router.get('/users/:usernameString/:language', Validator.paramsChecker, UsersController.fetchUsers);
 
 export default router;

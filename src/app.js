@@ -15,16 +15,9 @@ app.enable('trust proxy');
 app.use(cors());
 
 // Log requests to the console.
-morgan.token('id', req => req.id);
-const loggerFormat = ':id [:date[web]] ":method :url" :status :response-time';
+const loggerFormat = '- [:date[web]] ":method :url" :status :response-time';
 
-app.use(morgan(loggerFormat, {
-  skip: (req, res) => res.statusCode < 400, stream: process.stderr,
-}));
-
-app.use(morgan(loggerFormat, {
-  skip: (req, res) => res.statusCode >= 400, stream: process.stdout,
-}));
+app.use(morgan(loggerFormat));
 
 // Parse incoming requests data
 app.use(bodyParser.json());

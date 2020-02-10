@@ -1,3 +1,4 @@
+import UserService from '../services/UserService';
 
 /** Users Controller Class */
 class UsersController {
@@ -8,17 +9,26 @@ class UsersController {
    * @memberof UsersController
    * @returns users
    */
-  static async fetchUsersByLanguage(req, res) {
+  static async fetchUsers(req, res) {
     try {
-      const { usernameString, languages } = req.params;
+      const { usernameString, language } = req.params;
+      const { fallbacks } = req.query;
+      const userService = new UserService();
+      const result = await userService.fetchUsersByLanguage(usernameString, language, fallbacks);
 
+      if (!result.totalCount) {
+        return res.status(200).json({
+          message: 'There are no users who match the search queries, please try including falsbacks',
+          success: true,
+          users: {},
+        });
+      }
       return res.status(200).json({
-        message: 'Success',
+        message: 'Successfully retrieves users',
         success: true,
-        usernameString,
-        languages,
+        result,
       });
-    } catch (err) {
+    } catch (error) {
       return res.status(500).json({
         message: 'An unknown error occured,this could be a server error',
         success: false,
