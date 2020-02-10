@@ -6,11 +6,6 @@ import chaiHttp from 'chai-http';
 import app from '../src/app';
 
 chai.use(chaiHttp);
-const mock = {
-  username: 'julietezekwe',
-  language: 'javascript',
-  invalidLang: ' ',
-};
 const { expect } = chai;
 
 describe('Endpoint', () => {

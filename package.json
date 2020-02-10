@@ -12,6 +12,7 @@
     "docker:stop": "docker-compose down",
     "test": "NODE_ENV=test nyc mocha --exit --timeout 100000 --require @babel/register ./tests/*",
     "start": "npm run build && node ./dist/app.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
     "dev": "babel-node -- ./src/app.js"
   },
   "repository": {
