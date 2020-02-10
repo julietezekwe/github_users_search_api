@@ -1,0 +1,8 @@
+{
+    "watch": [
+        "src/",
+        ".env"
+    ],
+    "delay": 250,
+    "exec": "npm run dev"
+}
