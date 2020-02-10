@@ -15,12 +15,6 @@ class Validator {
       language,
     } = req.params;
     const { fallbacks } = req.query;
-    if (typeof usernameString.trim() !== 'string' && typeof language.trim() !== 'string') {
-      return res.status(400).json({
-        message: 'invalid parameter, please provide a valid string',
-        success: false,
-      });
-    }
     if (usernameString.trim().length < 1 || language.trim().length < 1) {
       return res.status(400).json({
         message: 'invalid parameter,please provide a valid string',
@@ -30,7 +24,7 @@ class Validator {
     const checkParam = (parameters) => {
       const params = parameters.split(',');
       params.forEach((param) => {
-        if (typeof param.trim() !== 'string') {
+        if (typeof param.trim() !== 'string' || param.trim().length < 1) {
           return res.status(400).json({
             message: 'invalid parameter, Please make sure all provided params are valid strings',
             success: false,
@@ -38,9 +32,9 @@ class Validator {
         }
         return true;
       });
-      return next();
     };
     if (fallbacks) checkParam(fallbacks);
+    return next();
   }
 }
 

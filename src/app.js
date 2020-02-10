@@ -9,7 +9,8 @@ dotenv.config();
 
 const app = express();
 
-app.get('/status', (req, res) => { res.status(200).end(); });
+app.get('/status', (req, res) => res.status(200)
+  .json({ message: 'Welcome to search api' }));
 app.enable('trust proxy');
 // Enable Cross Origin Resource Sharing to all origins
 app.use(cors());

@@ -3,6 +3,10 @@ services:
   app:
     container_name: github_search
     restart: always
+    env_file: .env
+    environment:
+      - GITHUB_OAUTH_TOKEN=$GITHUB_OAUTH_TOKEN
+      - GITHUB_BASE_URL=$GITHUB_BASE_URL
     build: .
     ports:
       - '9000:9000'
