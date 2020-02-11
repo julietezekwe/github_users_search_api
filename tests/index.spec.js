@@ -1,6 +1,5 @@
 /* eslint-disable prefer-template */
 /* eslint-disable no-undef */
-import 'babel-polyfill';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../src/app';

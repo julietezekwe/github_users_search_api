@@ -4,4 +4,4 @@ COPY package*.json nodemon.json package-lock.json ./
 RUN npm i
 COPY . .
 EXPOSE 9000
-CMD [ "npm", "run", "watch" ]
+CMD [ "npm", "start" ]
