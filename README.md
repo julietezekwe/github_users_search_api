@@ -1,11 +1,15 @@
-# github_users_search_api
+# User search API
 
-[![Build Status](https://travis-ci.com/julietezekwe/github_users_search_api.svg?branch=develop)](https://travis-ci.com/julietezekwe/github_users_search_api)
-
-[![Coverage Status](https://coveralls.io/repos/github/julietezekwe/github_users_search_api/badge.svg?branch=develop)](https://coveralls.io/github/julietezekwe/github_users_search_api?branch=develop)
+[![Build Status](https://travis-ci.com/julietezekwe/github_users_search_api.svg?branch=develop)](https://travis-ci.com/julietezekwe/github_users_search_api) [![Coverage Status](https://coveralls.io/repos/github/julietezekwe/github_users_search_api/badge.svg?branch=develop)](https://coveralls.io/github/julietezekwe/github_users_search_api?branch=develop)
 
 ## Introduction
-An API endpoint to search for GitHub users by specifying a programming language they use in their public repositories and a username string.
+An API endpoint to search for GitHub users by specifying a programming
+language they use in their public repositories and a username string.
+This API accepts Multiple programming languages as a fallback.
+
+A fallback should be considered when:
+- There are zero results for a language
+- A timeout occurred
 
 ## Table of Contents
 1. <a href="#hosted-app">Link to Hosted App</a>
@@ -16,19 +20,18 @@ An API endpoint to search for GitHub users by specifying a programming language 
 
 
 ## Link to Hosted App
-* [API link](http://business-search-api-2.herokuapp.com)
+* [API link](#)
 
 ## Tech Stack Used
 
 - [Node.js](https://nodejs.org/)
 - [Express](https://expressjs.com/)
-- [Typscript](https://www.typescriptlang.org/)
 
 
 ## Application Features
 
-*  Get three top coffee shops and resturant within 3km of the entered address
-*  Get all businesses grouped according to rating within 3km of the entered address
+*  An endpoint to fetch users by specifying some or all the username and a programming language
+*  The ability to add fallback languages in case the default language times out or returns no users
 
 
 ## How To Use
@@ -37,19 +40,24 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/julietezekwe/business-search-api.git
+$ git clone https://github.com/julietezekwe/github_users_search_api.git
 
 # Go into the repository
-$ cd business-search-api
+$ cd github_users_search_api
 
 # Install dependencies
 $ npm install
 
 # Create .env file for environmental variables in your root directory like the sample.env file and provide the keys
 
-
 # Run the app
 $ npm start
+
+# Check the port on the specified port on the env or 9000
+
+# To run the app on Docker, you must have docker installed locally and running
+$ npm run docker:build
+$ npm run docker
 ```
 
 ## API endpoints

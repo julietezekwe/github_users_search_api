@@ -33,7 +33,7 @@ app.use('*', (req, res) => res.status(404).json({
 }));
 
 const hostname = process.env.hostname || '127.0.0.1';
-const port = process.env.port || 9000;
+const port = process.env.PORT || 9000;
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console
