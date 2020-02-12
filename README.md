@@ -1,6 +1,6 @@
 # User search API
 
-[![Build Status](https://travis-ci.com/julietezekwe/github_users_search_api.svg?branch=develop)](https://travis-ci.com/julietezekwe/github_users_search_api) [![Coverage Status](https://coveralls.io/repos/github/julietezekwe/github_users_search_api/badge.svg?branch=develop)](https://coveralls.io/github/julietezekwe/github_users_search_api?branch=develop)
+[![Build Status](https://travis-ci.com/julietezekwe/github_users_search_api.svg?branch=develop)](https://travis-ci.com/julietezekwe/github_users_search_api) [![Coverage Status](https://coveralls.io/repos/github/julietezekwe/github_users_search_api/badge.svg?branch=develop)](https://coveralls.io/github/julietezekwe/github_users_search_api?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/17f4095ba43a549dadee/maintainability)](https://codeclimate.com/github/julietezekwe/github_users_search_api/maintainability)
 
 ## Introduction
 An API endpoint to search for GitHub users by specifying a programming
@@ -20,7 +20,7 @@ A fallback should be considered when:
 
 
 ## Link to Hosted App
-* [API link](#)
+* [API link](https://user-search-api-2020.herokuapp.com/)
 
 ## Tech Stack Used
 
@@ -58,6 +58,9 @@ $ npm start
 # To run the app on Docker, you must have docker installed locally and running
 $ npm run docker:build
 $ npm run docker
+
+# Run test
+$ npm run test
 ```
 
 ## API endpoints
@@ -124,6 +127,11 @@ response:
 }
 
 ```
+## Recommended improvements
+
+* The api response can be cached to improve the application performance
+  and avoid refetching whas been fetched; The caching can be done with Redis.
+* The response can also be paginated for readability when the response gets longer.
 
 ## Author
 

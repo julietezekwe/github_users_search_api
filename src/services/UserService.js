@@ -22,7 +22,6 @@ class UserService {
   async fetchUsersByLanguage(username, language, fallbacks = '') {
     try {
       let users;
-      let userDetails = {};
       users = await this.gitHubHelper.searchUsersByLanguage(username, language);
 
       users.fromFallBack = false;
@@ -39,20 +38,26 @@ class UserService {
           }
         }
       }
-      const { language: programmingLanguage, fromFallBack, total_count: totalCount } = users;
-      if (totalCount) {
-        const data = await this.gitHubHelper.retrieveUserDetails(users.items);
-        userDetails = {
-          users: data,
-          programmingLanguage,
-          fromFallBack,
-          totalCount,
-        };
-      }
+      const userDetails = await this.prepareResult(users);
       return userDetails;
     } catch (error) {
       throw error;
     }
+  }
+
+  async prepareResult(users) {
+    let userDetails = {};
+    const { language: programmingLanguage, fromFallBack, total_count: totalCount } = users;
+    if (totalCount) {
+      const data = await this.gitHubHelper.retrieveUserDetails(users.items);
+      userDetails = {
+        users: data,
+        programmingLanguage,
+        fromFallBack,
+        totalCount,
+      };
+    }
+    return userDetails;
   }
 }
 export default UserService;
